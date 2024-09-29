@@ -1,31 +1,31 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import { trpc } from '../../utils/trpc';
+import { useState } from 'react'
+import { trpc } from '../../utils/trpc'
 
 export default function AddUserForm() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [error, setError] = useState('');
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [error, setError] = useState('')
 
-    const utils = trpc.useUtils();
+    const utils = trpc.useUtils()
     const createUser = trpc.user.createUser.useMutation({
         onSuccess: () => {
-            utils.user.getUsers.invalidate();
-            setName('');
-            setEmail('');
-            setError('');
+            utils.user.getUsers.invalidate()
+            setName('')
+            setEmail('')
+            setError('')
         },
         onError: (error) => {
-            console.error('Error creating user:', error);
-            setError(error.message);
+            console.error('Error creating user:', error)
+            setError(error.message)
         },
-    });
+    })
 
     const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        createUser.mutate({ name, email });
-    };
+        e.preventDefault()
+        createUser.mutate({ name, email })
+    }
 
     return (
         <form onSubmit={handleSubmit}>
@@ -48,5 +48,5 @@ export default function AddUserForm() {
             </button>
             {error && <p style={{ color: 'red' }}>{error}</p>}
         </form>
-    );
+    )
 }

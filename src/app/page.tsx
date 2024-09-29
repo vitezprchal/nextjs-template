@@ -1,6 +1,6 @@
-import { Suspense } from 'react';
-import UserList from './components/userList';
-import AddUserForm from './components/addUserForm';
+import { Suspense } from 'react'
+import UserList from './components/userList'
+import AddUserForm from './components/addUserForm'
 
 export default function Home() {
   return (
@@ -11,5 +11,5 @@ export default function Home() {
       </Suspense>
       <AddUserForm />
     </div>
-  );
+  )
 }

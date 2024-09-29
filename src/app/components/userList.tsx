@@ -1,13 +1,13 @@
-'use client';
+'use client'
 
-import { trpc } from '../../utils/trpc';
-import { User } from '../types/user';
+import { trpc } from '../../utils/trpc'
+import { User } from '../types/user'
 
 export default function UserList() {
-    const { data: users, isLoading, error } = trpc.user.getUsers.useQuery();
+    const { data: users, isLoading, error } = trpc.user.getUsers.useQuery()
 
-    if (isLoading) return <div>Loading users...</div>;
-    if (error) return <div>Error: {error.message}</div>;
+    if (isLoading) return <div>Loading users...</div>
+    if (error) return <div>Error: {error.message}</div>
 
     return (
         <ul>
@@ -17,5 +17,5 @@ export default function UserList() {
                 </li>
             ))}
         </ul>
-    );
+    )
 }
